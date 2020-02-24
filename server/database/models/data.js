@@ -1,6 +1,29 @@
 
 module.exports = (mongoose) => {
 
+    const eachDaySchema = new mongoose.Schema({
+        price_change: {
+            type: String
+        },
+        price_change_pct: {
+            type: String
+        },
+        volume: {
+            type: String
+        },
+        volume_change: {
+            type: String
+        },
+        volume_change_pct: {
+            type: String
+        },
+        market_cap_change: {
+            type: String
+        },
+        market_cap_change_pct: {
+            type: String
+        }
+    })
     // structure of data 
     const dataSchema = new mongoose.Schema({
 
@@ -14,29 +37,33 @@ module.exports = (mongoose) => {
             type: String
         },
         rank: {
-            type: String
+            type: Number
         },
         price: {
-            type: String
-        }, 
+            type: Number
+        },
         priceDate: {
-            type: String
-        }, 
+            type: Date
+        },
         marketCap: {
-            type: String
-        }, 
+            type: Number
+        },
         circulatingSupply: {
-            type: String
-        }, 
+            type: Number
+        },
         maxSupply: {
-            type: String
-        }, 
+            type: Number
+        },
         high: {
-            type: String
-        }, 
+            type: Number
+        },
         highTimestamp: {
-            type: String
-        }, 
+            type: Date
+        },
+        d1: eachDaySchema,
+        d7: eachDaySchema,
+        d30: eachDaySchema,
+        d365: eachDaySchema
 
     })
 

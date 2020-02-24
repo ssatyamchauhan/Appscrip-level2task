@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
-require('dotenv').config({ path: '/home/react/home/nodeReact/.env' })
-
+require('dotenv').config({ path: '/home/react/Appscript/server/.env' })
 module.exports = () => {
 
     // Build the connection String and create the database connection
@@ -29,10 +28,17 @@ module.exports = () => {
     })
 
     // Requiring schemas from the root database/models folder
+    
     const dataSchema = require('./models/data')(mongoose);
 
     // So far so good. We've got a schema and next step is compiling our schema into a Model
-    mongoose.model('data', dataSchema);
+
+    if (!mongoose.models.data) {
+        //
+        console.log('table is made ')
+        mongoose.model('data', dataSchema);
+    }
+    
 
     // If the node process ends, close the mongoose connection 
     process.on('SIGINT', function () {
